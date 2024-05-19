@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>ESTOQUE</title>
+</head>
+<body>  
+    <div class="form">
+        <form id="produtoForm">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Cadastro de produtos</h1>
+                    <img src="../img/storage.png" alt="icone 1" id="estoqueicon">
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="codProduto">Código produto: </label>
+                        <input id="codProduto" type="text" name="codProduto" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="nomeProduto">Nome produto: </label>
+                        <input id="nomeProduto" type="text" name="nomeProduto" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="quantidade">Quantidade: </label>
+                        <input id="quantidade" type="number" name="quantidade" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="descricaoProduto">Descrição produto: </label>
+                        <textarea id="descricaoProduto" name="descricaoProduto" rows="4"></textarea>
+                    </div>
+                    <div class="input-box">
+                        <button type="submit" id="Enviar">Enviar</button>
+                    </div>
+                    <div class="input-box">
+                        <button type="button" id="add">Adicionar</button> 
+                    </div>
+                    <div class="input-box">
+                        <button type="button" id="remover">Remover</button> 
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="produtosSalvos" class="produtos-salvos"></div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
