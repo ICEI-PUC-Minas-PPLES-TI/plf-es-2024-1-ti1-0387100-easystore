@@ -69,18 +69,20 @@ let count = 0;
 
 document.addEventListener('DOMContentLoaded', (event) => {
   renderizarMenuPrincipal();
-  carregarPaginaPrincipal(produtos);
+  carregarPaginaPrincipal();
 });
 
 function carregarPaginaPrincipal(produtosParaSeremCarregados) {
-  if (count == 0) {
+  let DadosLocalStorage = localStorage.getItem('produtos');
+  if (DadosLocalStorage == null) {
     const produtosJSON = JSON.stringify({ "produtos": produtos });
     localStorage.setItem('produtos', produtosJSON);
     count++;
-  } else {
+  } else if (produtosParaSeremCarregados != null) {
     const produtosJSON = JSON.stringify({ "produtos": produtosParaSeremCarregados });
     localStorage.setItem('produtos', produtosJSON);
     count++;
+  } else {
   }
   
 
