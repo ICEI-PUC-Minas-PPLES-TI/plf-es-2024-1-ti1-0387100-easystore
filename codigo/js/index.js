@@ -65,8 +65,6 @@ const produtos = [
 }
 ];
 
-let count = 0;
-
 document.addEventListener('DOMContentLoaded', (event) => {
   renderizarMenuPrincipal();
   carregarPaginaPrincipal();
@@ -90,7 +88,6 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
   let produtosData = localStorage.getItem('produtos');
   if (produtosData) {
     let produtosObj = JSON.parse(produtosData);
-    console.log(produtosObj);
 
     let produtosHTML = produtosObj.produtos.map(produto => {
         return `
