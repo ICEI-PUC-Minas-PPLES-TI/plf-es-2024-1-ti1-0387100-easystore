@@ -219,15 +219,15 @@ function renderizarMenuPrincipal() {
   body.innerHTML = `
     <div class="container table-container">
         <div class="row">
-          <div style="display: flex; justify-content: center;" class="col-11">
-            <a style="color: black;" class="navbar-brand" href="#">
-              <img src="img/logo2.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
-              Easy Storage
-            </a>
-          </div>
-          <div style="display: flex; justify-content: flex-end;" class="col-1">
-            <img src="img/avatar.png" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="" loading="lazy">
-          </div>
+          <div class="col-12" style="display: flex; justify-content: center; align-items: center; position: relative;">
+			  <a style="color: black;" class="navbar-brand" href="index.html">
+				<img src="img/logo2.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+				Easy Storage
+			  </a>
+			  <div style="position: absolute; right: 0;">
+				<img src="img/avatar.png" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="" loading="lazy">
+			  </div>
+			</div>
         </div>
         
     </div>
@@ -235,10 +235,10 @@ function renderizarMenuPrincipal() {
     <div class="container table-container">
         <div class="row">
           <div class="col">
-            <button class="btn btn-success btn-cadastrar">
+            <a href="TelaCadProd.html" class="btn btn-success btn-cadastrar">
                 Cadastrar
                 <i class="bi bi-file-earmark-plus-fill"></i>
-            </button>
+            </a>
           </div>
           <div style="display: flex; justify-content: flex-end;" class="col">
             <form class="form-inline">
@@ -246,9 +246,9 @@ function renderizarMenuPrincipal() {
               <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
                 <i class="bi bi-search"></i>
               </button>
-              <button class="btn btn-outline-secondary my-2 my-sm-0 ml-2" type="button">
+              <a href="relatorios.html"  class="btn btn-outline-secondary my-2 my-sm-0 ml-2" type="button">
                 <i class="bi bi-funnel-fill"></i>
-              </button>
+              </a>
             </form>
           </div>
         </div>
