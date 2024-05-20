@@ -1,55 +1,50 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    carregarTela();
+    carregarTelaEdicao();
 });
 
-function edit() {
-    document.querySelectorAll('.form-control').forEach(element => {
-        element.disabled = false;
-    });
-
-    document.getElementById('btnEdit').disabled = true;
-    document.getElementById('btnCancelar').disabled = false;
-    document.getElementById('btnSalvar').disabled = false;
-}
-
 function cancelar() {
-    carregarTela();
+  edit(false);
+}
 
-    document.querySelectorAll('.form-control').forEach(element => {
-        element.disabled = true;
+function edit(permitirAlteracoes) {
+  const produtoEditado = {
+      id: parseInt(document.getElementById('id').value),
+      nome: document.getElementById('nome').value,
+      quantidade: document.getElementById('qnt').value,
+      preco: document.getElementById('preco').value,
+      codBarras: document.getElementById('codBarras').value,
+      descricao: document.getElementById('desc').value,
+      dtCriacao: document.getElementById('dtCriacao').value,
+      dtAtualiza: document.getElementById('dtAtualiza').value
+  };
+
+  let produtosJSON = localStorage.getItem('produtos');
+  let array = [];
+  if (produtosJSON) {
+    array = JSON.parse(produtosJSON)
+  }
+  if (Array.isArray(array.produtos) && permitirAlteracoes) {
+    array.produtos.forEach((produto, i) => {
+      if (produto.id == produtoEditado.id) {
+        array.produtos.splice(i, 1, produtoEditado)
+      }
     });
+  }
 
-    document.getElementById('btnEdit').disabled = false;
-    document.getElementById('btnCancelar').disabled = true;
-    document.getElementById('btnSalvar').disabled = true;
+  renderizarMenuPrincipal();
+  carregarPaginaPrincipal(array.produtos);
 }
 
-function salvar() {
-    const produto = {
-        nome: document.getElementById('nome').value,
-        qnt: document.getElementById('qnt').value,
-        preco: document.getElementById('preco').value,
-        codBarras: document.getElementById('codBarras').value,
-        desc: document.getElementById('desc').value,
-        dtCriacao: document.getElementById('dtCriacao').value,
-        dtAtualiza: document.getElementById('dtAtualiza').value
-    };
-
-    localStorage.setItem('produto', JSON.stringify(produto));
-    alert('Produto salvo com sucesso!');
-
-    cancelar();
-}
-
-function carregarTela() {
-    const produto = JSON.parse(localStorage.getItem('produto'));
+function carregarTelaEdicao() {
+    const produto = JSON.parse(localStorage.getItem('produtoSelecionado'));
 
     if (produto) {
+        document.getElementById('id').value = produto.id;
         document.getElementById('nome').value = produto.nome;
-        document.getElementById('qnt').value = produto.qnt;
+        document.getElementById('qnt').value = produto.quantidade;
         document.getElementById('preco').value = produto.preco;
         document.getElementById('codBarras').value = produto.codBarras;
-        document.getElementById('desc').value = produto.desc;
+        document.getElementById('desc').value = produto.descricao;
         document.getElementById('dtCriacao').value = produto.dtCriacao;
         document.getElementById('dtAtualiza').value = produto.dtAtualiza;
     }
