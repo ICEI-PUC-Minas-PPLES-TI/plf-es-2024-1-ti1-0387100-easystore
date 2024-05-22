@@ -75,15 +75,10 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
   if (DadosLocalStorage == null) {
     const produtosJSON = JSON.stringify({ "produtos": produtos });
     localStorage.setItem('produtos', produtosJSON);
-    count++;
   } else if (produtosParaSeremCarregados != null) {
     const produtosJSON = JSON.stringify({ "produtos": produtosParaSeremCarregados });
     localStorage.setItem('produtos', produtosJSON);
-    count++;
-  } else {
   }
-  
-
 
   let produtosData = localStorage.getItem('produtos');
   if (produtosData) {
