@@ -1,3 +1,7 @@
+document.getElementById('closeIcon').addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+
 document.getElementById('add').addEventListener('click', function() {
     const codProduto = document.getElementById('codProduto').value;
     const quantidade = parseInt(document.getElementById('quantidade').value);
@@ -8,23 +12,30 @@ document.getElementById('add').addEventListener('click', function() {
     }
 
     const produtoExistenteIndex = produtos.findIndex(p => p.codProduto === codProduto);
+    const nomeProduto = document.getElementById('nomeProduto').value;
+    const descricaoProduto = document.getElementById('descricaoProduto').value;
 
     if (produtoExistenteIndex !== -1) {
-        produtos[produtoExistenteIndex].quantidade += quantidade;
+        // Verifica se o nome do produto coincide
+        if (produtos[produtoExistenteIndex].nomeProduto !== nomeProduto) {
+            alert(`Já existe um produto com o código ${codProduto}, chamado "${produtos[produtoExistenteIndex].nomeProduto}"!`);
+        } else {
+            produtos[produtoExistenteIndex].quantidade += quantidade;
+            localStorage.setItem('produtos', JSON.stringify(produtos));
+            document.getElementById('produtoForm').reset();
+            exibirProdutosSalvos();
+        }
     } else {
-        const nomeProduto = document.getElementById('nomeProduto').value;
-        const descricaoProduto = document.getElementById('descricaoProduto').value;
         produtos.push({
             codProduto,
             nomeProduto,
             quantidade,
             descricaoProduto
         });
+        localStorage.setItem('produtos', JSON.stringify(produtos));
+        document.getElementById('produtoForm').reset();
+        exibirProdutosSalvos();
     }
-
-    localStorage.setItem('produtos', JSON.stringify(produtos));
-    document.getElementById('produtoForm').reset();
-    exibirProdutosSalvos();
 });
 
 document.getElementById('remover').addEventListener('click', function() {

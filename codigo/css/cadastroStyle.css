@@ -1,146 +1,155 @@
-.produtos-salvos {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.produto-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.produto-item:last-child {
-    border-bottom: none;
-}
-
-#estoqueicon {
-    width: 50px;
-    height: auto;
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
-body {
+* {
     margin: 0;
     padding: 0;
-    background-color: #d3d3d3;
+    box-sizing: border-box;
+ }
+ 
+ body, html {
+     height: 100%;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+ 
+ section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #3586FF;
+    background: radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #3586FF 100%);
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-}
-
-.form {
-    background-color: #fff;
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.form-header .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.input-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-box label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.input-box input,
-.input-box textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.input-box input:focus,
-.input-box textarea:focus {
-    border-color: #007BFF;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-#descricaoProduto {
-    resize: vertical;
-    min-height: 100px;
-    max-height: 300px;
-}
-
-#Enviar
-{
-    color: white;
-    border-radius: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: black;
-}
-
-button[type="submit"]:hover,
-button[type="button"]:hover {
-    background-color: #03b45c;
-}
-
-
-@media (max-width: 600px) {
-    .form {
-        width: 100%;
-        padding: 15px;
+ }
+ 
+ section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 198px;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg');
+    background-size: 1600px 198px;
+ }
+ 
+ section .wave.wave1 {
+    animation: animate-wave-1 30s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: 0;
+ }
+ 
+ section .wave.wave2 {
+    animation: animate-wave-2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+ }
+ 
+ section .wave.wave3 {
+    animation: animate-wave-3 30s linear infinite;
+    z-index: 998;
+    opacity: 0.2;
+    animation-delay: -2s;
+    bottom: 15px;
+ }
+ 
+ section .wave.wave4 {
+    animation: animate-wave-4 5s linear infinite;
+    z-index: 997;
+    opacity: 0.7;
+    animation-delay: -5s;
+    bottom: 20px;
+ }
+ 
+ @keyframes animate-wave-1 {
+    0% {
+       background-position-x: 0;
     }
-
-    .form-header .title {
-        flex-direction: column;
+    100% {
+       background-position-x: 1600px;
     }
-
-    #estoqueicon {
-        margin: 10px 0;
+ }
+ 
+ @keyframes animate-wave-2 {
+    0% {
+       background-position-x: 0;
     }
-}
+    100% {
+       background-position-x: -1600px;
+    }
+ }
+ 
+ @keyframes animate-wave-3 {
+    0% {
+       background-position-x: 0;
+    }
+    100% {
+       background-position-x: 1600px;
+    }
+ }
+ 
+ @keyframes animate-wave-4 {
+    0% {
+       background-position-x: 0;
+    }
+    100% {
+       background-position-x: -1600px;
+    }
+ }
+ 
+ .container {
+     position: relative;
+     z-index: 1001;
+     background: rgba(255, 255, 255, 0.9);
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     max-width: 500px;
+     width: 100%;
+     margin: 0 20px;
+ }
+ 
+ .close {
+     text-align: right;
+ }
+ 
+ .close-icon {
+     cursor: pointer;
+     width: 30px;
+     height: 30px;
+ }
+ 
+ .form-header {
+     text-align: center;
+ }
+ 
+ .input-group {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+ }
+ 
+ .input-box {
+     flex: 1 1 100%;
+ }
+ 
+ .input-box input,
+ .input-box textarea {
+     width: 100%;
+     padding: 10px;
+     margin-top: 5px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+ 
+ .input-box button {
+     width: 100%;
+     padding: 10px;
+     margin-top: 10px;
+     border: none;
+     border-radius: 5px;
+ }
 
-#add {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-.hidden {
-    display: none;
-}
-
-
-#add:hover {
-    background-color: darkgreen;
-}
-
-#remover {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-#remover:hover {
-    background-color: darkred;
-}
+ 
