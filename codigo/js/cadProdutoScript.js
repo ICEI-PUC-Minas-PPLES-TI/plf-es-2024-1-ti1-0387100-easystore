@@ -1,86 +1,63 @@
-document.getElementById('closeIcon').addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
+document.addEventListener('DOMContentLoaded', function () {
+    const addFornecedorSelect = document.getElementById('addFornecedor');
+    const fornecedorForm = document.getElementById('fornecedorForm');
+    const addButton = document.getElementById('add');
+    const closeIcon = document.getElementById('closeIcon');
 
-document.getElementById('add').addEventListener('click', function() {
-    const codProduto = document.getElementById('codProduto').value;
-    const quantidade = parseInt(document.getElementById('quantidade').value);
-    let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-
-    if (!Array.isArray(produtos)) {
-        produtos = [];
-    }
-
-    const produtoExistenteIndex = produtos.findIndex(p => p.codProduto === codProduto);
-    const nomeProduto = document.getElementById('nomeProduto').value;
-    const descricaoProduto = document.getElementById('descricaoProduto').value;
-
-    if (produtoExistenteIndex !== -1) {
-        // Verifica se o nome do produto coincide
-        if (produtos[produtoExistenteIndex].nomeProduto !== nomeProduto) {
-            alert(`Já existe um produto com o código ${codProduto}, chamado "${produtos[produtoExistenteIndex].nomeProduto}"!`);
+    // Função para mostrar ou esconder o formulário do fornecedor
+    addFornecedorSelect.addEventListener('change', function () {
+        if (this.value === 'sim') {
+            fornecedorForm.classList.remove('hidden');
         } else {
-            produtos[produtoExistenteIndex].quantidade += quantidade;
-            localStorage.setItem('produtos', JSON.stringify(produtos));
-            document.getElementById('produtoForm').reset();
-            exibirProdutosSalvos();
+            fornecedorForm.classList.add('hidden');
         }
-    } else {
-        produtos.push({
-            codProduto,
-            nomeProduto,
-            quantidade,
-            descricaoProduto
-        });
+    });
+
+    // Função para adicionar um novo produto
+    addButton.addEventListener('click', function () {
+        // Capturar os valores dos campos do produto
+        const codProduto = document.getElementById('codProduto').value;
+        const nomeProduto = document.getElementById('nomeProduto').value;
+        const quantidade = document.getElementById('quantidade').value;
+        const descricaoProduto = document.getElementById('descricaoProduto').value;
+
+        // Capturar os valores dos campos do fornecedor, se visíveis
+        let fornecedor = null;
+        if (addFornecedorSelect.value === 'sim') {
+            const nomeFornecedor = document.getElementById('nomeFornecedor').value;
+            const dataEntrega = document.getElementById('dataEntrega').value;
+            const cidadeFornecedor = document.getElementById('cidadeFornecedor').value;
+
+            fornecedor = {
+                nomeFornecedor: nomeFornecedor,
+                dataEntrega: dataEntrega,
+                cidadeFornecedor: cidadeFornecedor
+            };
+        }
+
+        // Criar um objeto para armazenar os dados
+        const produto = {
+            codProduto: codProduto,
+            nomeProduto: nomeProduto,
+            quantidade: quantidade,
+            descricaoProduto: descricaoProduto,
+            fornecedor: fornecedor
+        };
+
+        let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+        produtos.push(produto);
+
         localStorage.setItem('produtos', JSON.stringify(produtos));
+
+        
         document.getElementById('produtoForm').reset();
-        exibirProdutosSalvos();
-    }
+        fornecedorForm.classList.add('hidden');
+        addFornecedorSelect.value = 'nao';
+    });
+
+    
+    closeIcon.addEventListener('click', function () {
+        window.location.href = 'index.html';
+    });
 });
-
-document.getElementById('remover').addEventListener('click', function() {
-    const codProduto = document.getElementById('codProduto').value;
-    const quantidade = parseInt(document.getElementById('quantidade').value);
-    let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-
-    if (!Array.isArray(produtos)) {
-        produtos = [];
-    }
-
-    const produtoExistenteIndex = produtos.findIndex(p => p.codProduto === codProduto);
-
-    if (produtoExistenteIndex !== -1) {
-        produtos[produtoExistenteIndex].quantidade -= quantidade;
-        if (produtos[produtoExistenteIndex].quantidade <= 0) {
-            produtos.splice(produtoExistenteIndex, 1);
-        }
-        localStorage.setItem('produtos', JSON.stringify(produtos));
-    } else {
-        alert('Produto não encontrado no estoque!');
-    }
-
-    document.getElementById('produtoForm').reset();
-    exibirProdutosSalvos();
-});
-
-function exibirProdutosSalvos() {
-    let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
-
-    if (!Array.isArray(produtos)) {
-        produtos = [];
-    }
-
-    let produtosHTML = produtos.map(produto => {
-        return `
-            <tr>
-                <td>${produto.codProduto}</td>
-                <td>${produto.nomeProduto}</td>
-                <td>${produto.descricaoProduto}</td>
-                <td>${produto.quantidade}</td>
-            </tr>
-        `;
-    }).join('');
-    document.getElementById('produtosTableBody').innerHTML = produtosHTML;
-}
-
-document.addEventListener('DOMContentLoaded', exibirProdutosSalvos);
