@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.getElementById('add');
     const closeIcon = document.getElementById('closeIcon');
 
-    // Função para mostrar ou esconder o formulário do fornecedor
     addFornecedorSelect.addEventListener('change', function () {
         if (this.value === 'sim') {
             fornecedorForm.classList.remove('hidden');
@@ -13,15 +12,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Função para adicionar um novo produto
+
     addButton.addEventListener('click', function () {
-        // Capturar os valores dos campos do produto
+
         const codProduto = document.getElementById('codProduto').value;
         const nomeProduto = document.getElementById('nomeProduto').value;
         const quantidade = document.getElementById('quantidade').value;
         const descricaoProduto = document.getElementById('descricaoProduto').value;
 
-        // Capturar os valores dos campos do fornecedor, se visíveis
         let fornecedor = null;
         if (addFornecedorSelect.value === 'sim') {
             const nomeFornecedor = document.getElementById('nomeFornecedor').value;
