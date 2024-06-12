@@ -66,7 +66,7 @@ const produtos = [
 ];
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  renderizarMenuPrincipal();
+  // renderizarMenuPrincipal();
   carregarPaginaPrincipal();
 });
 
@@ -110,10 +110,11 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
         let idProcurado = parseInt(linha.id);
         if (Array.isArray(array.produtos)) {
           let objetoEncontrado = array.produtos.find(objeto => objeto.id === idProcurado);
+          console.log('teste objetoEncontrado ->', objetoEncontrado);
           const objetoEncontradoString = JSON.stringify(objetoEncontrado)
           localStorage.setItem('produtoSelecionado', objetoEncontradoString)
 
-          renderizarPaginaEdicao();
+          window.location.href = 'edicao-produto.html'
           carregarTelaEdicao();
         }
       }
@@ -156,120 +157,3 @@ document.querySelector('#quantidade').addEventListener('click', function() {
     iconeDescricao.className = 'bi bi-sort-numeric-up-alt';
   }
 })
-
-function renderizarPaginaEdicao() {
-  body = document.querySelector('body');
-  body.innerHTML = `
-    <div class="container mt-5">
-        <center>
-        <img src="img/logo.png" style="height: 64px; width: 310px;" >
-        </center>
-        <div class="row">
-            <div class="col-md-6">
-              <input type="number" hidden id="id"> 
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" id="nome">
-                </div>
-                <div class="form-group">
-                    <label for="qnt">Qtd:</label>
-                    <input type="number" class="form-control" id="qnt">
-                </div>
-                <div class="form-group">
-                    <label for="preco">Preço:</label>
-                    <input type="number" class="form-control" id="preco" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label for="dtCriacao">Criado Em:</label>
-                    <input type="date" class="form-control" id="dtCriacao">
-                </div>
-                <div class="form-group">
-                    <label for="dtAtualiza">Atualizado Em:</label>
-                    <input type="date" class="form-control" id="dtAtualiza">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="codBarras">Código de Barras:</label>
-                    <input type="text" class="form-control" id="codBarras">
-                </div>
-                <div class="form-group">
-                    <label for="desc">Descrição:</label>
-                    <textarea class="form-control" id="desc" rows="4"></textarea>
-                </div>
-                <div class="form-group text-right">
-                    <button id="btnCancelar" class="btn btn-danger mr-2" onclick="cancelar()">Cancelar</button>
-                    <button id="btnEdit" class="btn btn-primary mr-2" onclick="edit(true)">Editar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Bootstrap -->
-  `
-}
-
-function renderizarMenuPrincipal() {
-  body = document.querySelector('body');
-  body.innerHTML = `
-    <div class="container table-container">
-        <div class="row">
-          <div class="col-12" style="display: flex; justify-content: center; align-items: center; position: relative;">
-			  <a style="color: black;" class="navbar-brand" href="index.html">
-				<img src="img/logo2.png" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
-				Easy Storage
-			  </a>
-			  <div style="position: absolute; right: 0;">
-				<img src="img/avatar.png" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="" loading="lazy">
-			  </div>
-			</div>
-        </div>
-        
-    </div>
-
-    <div class="container table-container">
-        <div class="row">
-          <div class="col">
-            <a href="TelaCadProd.html" class="btn btn-success btn-cadastrar">
-                Cadastrar
-                <i class="bi bi-file-earmark-plus-fill"></i>
-            </a>
-          </div>
-          <div style="display: flex; justify-content: flex-end;" class="col">
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-              <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
-                <i class="bi bi-search"></i>
-              </button>
-              <a href="relatorios.html"  class="btn btn-outline-secondary my-2 my-sm-0 ml-2" type="button">
-                <i class="bi bi-funnel-fill"></i>
-              </a>
-            </form>
-          </div>
-        </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th id="descricao" scope="col">
-                    Descrição
-                    <i
-                      id="icone-descricao"
-                      style="border-radius: 50px; cursor: pointer; border-width: 1px; border-style: solid; padding: 2px;"
-                      class="bi bi-sort-alpha-down"></i>
-                  </th>
-                  <th id="quantidade" scope="col">
-                    Quantidade
-                    <i
-                      id="icone-quantidade"
-                      style="border-radius: 50px; cursor: pointer; border-width: 1px; border-style: solid; padding: 2px;"
-                      class="bi bi-sort-numeric-down"></i>
-                  </th>
-                  <th scope="col">*</th>
-                </tr>
-            </thead>
-            <tbody id="produtosTableBody">
-                
-            </tbody>
-        </table>
-    </div>
-  `
-}

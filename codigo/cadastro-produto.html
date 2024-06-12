@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/cadastroStyle.css">
-    <title>ESTOQUE</title>
+    <title>Easy Storage</title>
     <style>
         .hidden {
             display: none;
@@ -31,17 +31,25 @@
                             <img src="img/storage.png" alt="icone 1" id="estoqueicon" style="width: 8%;">
                         </div>
                         <div class="input-group">
-                            <div class="input-box">
-                                <label for="codProduto">Código produto: </label>
-                                <input id="codProduto" type="text" name="codProduto" required>
+                            <div style="display: flex; flex-wrap: nowrap;">
+                              <div class="input-box">
+                                <label for="codBarras">Código de Barras: </label>
+                                <input id="codBarras" type="text" name="codBarras" required>
+                              </div>
+                              <div class="input-box">
+                                  <label for="nomeProduto">Nome produto: </label>
+                                  <input id="nomeProduto" type="text" name="nomeProduto" required>
+                              </div>
                             </div>
-                            <div class="input-box">
-                                <label for="nomeProduto">Nome produto: </label>
-                                <input id="nomeProduto" type="text" name="nomeProduto" required>
-                            </div>
-                            <div class="input-box">
-                                <label for="quantidade">Quantidade: </label>
-                                <input id="quantidade" type="number" name="quantidade" required>
+                            <div style="display: flex; flex-wrap: nowrap;">
+                              <div class="input-box">
+                                  <label for="quantidade">Quantidade: </label>
+                                  <input id="quantidade" type="number" name="quantidade" required>
+                              </div>
+                              <div class="input-box">
+                                <label for="precoUnitario">Preço Unitário: </label>
+                                <input id="precoUnitario" type="number" name="precoUnitario" required>
+                              </div>
                             </div>
                             <div class="input-box">
                                 <label for="descricaoProduto">Descrição produto: </label>
@@ -57,6 +65,7 @@
                         </div>
 
                         <div id="fornecedorForm" class="input-group hidden">
+                          <div style="display: flex; flex-wrap: nowrap;">
                             <div class="input-box">
                                 <label for="nomeFornecedor">Nome fornecedor: </label>
                                 <input id="nomeFornecedor" type="text" name="nomeFornecedor">
@@ -66,16 +75,17 @@
                                 <input id="dataEntrega" type="date" name="dataEntrega">
                             </div>
                             <div class="input-box">
-                                <label for="cidadeFornecedor">Cidade do fornecedor: </label>
+                                <label for="cidadeFornecedor">Cidade: </label>
                                 <input id="cidadeFornecedor" type="text" name="cidadeFornecedor">
                             </div>
+                          </div>
                         </div>
 
                         <div class="input-box">
-                            <button type="button" id="add" class="btn btn-outline-success">Adicionar</button>
+                            <button type="button" id="add" class="btn btn-outline-success" onclick="cadastrarProduto()">Cadastrar</button>
                         </div>
                         <div class="input-box">
-                            <button type="button" id="remover" class="btn btn-outline-danger">Remover</button>
+                            <button type="button" id="cancelar" class="btn btn-outline-danger" onclick="cancelar()">Cancelar</button>
                         </div>
                     </div>
                 </form>
@@ -83,7 +93,8 @@
             <div id="produtosSalvos" class="produtos-salvos hidden"></div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="./js/cadProdutoScript.js"></script>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="./js/cadProdutoScript.js"></script>
+<script src="./js/index.js"></script>
