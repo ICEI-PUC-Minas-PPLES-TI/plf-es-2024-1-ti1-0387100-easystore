@@ -24,13 +24,13 @@ function cadastrarProduto() {
   const descricaoProduto = document.getElementById('descricaoProduto').value;
   const precoUnitario = document.getElementById('precoUnitario').value;
 
-  let fornecedor = null;
+  let fornecedores = null;
   if (addFornecedorSelect.value === 'sim') {
       const nomeFornecedor = document.getElementById('nomeFornecedor').value;
       const dataEntrega = document.getElementById('dataEntrega').value;
       const cidadeFornecedor = document.getElementById('cidadeFornecedor').value;
 
-      fornecedor = {
+      fornecedores = {
         nomeFornecedor: nomeFornecedor,
         dataEntrega: dataEntrega,
         cidadeFornecedor: cidadeFornecedor
@@ -45,7 +45,7 @@ function cadastrarProduto() {
     descricao: descricaoProduto,
     codBarras: parseInt(codBarras),
     preco: parseFloat(precoUnitario),
-    fornecedor: fornecedor
+    fornecedores: fornecedores
   };
 
   let produtosJSON = localStorage.getItem('produtos');
