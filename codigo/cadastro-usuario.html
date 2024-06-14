@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Easy Storage</title>
+    <title>Easy Storage</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .container {
@@ -17,29 +17,30 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center">User Registration</h2>
+        <h2 class="text-center">Cadastro de Usuário</h2>
         <form>
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="nome">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email">
             </div>
             <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" placeholder="Enter CPF">
+                <input type="number" class="form-control" id="cpf">
             </div>
             <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+                <label for="phone">Telefone</label>
+                <input type="number" class="form-control" id="telefone">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <a href="login.html">Ir para o Login</a>
+            <button type="button" class="btn btn-primary btn-block" onclick="cadastrarUsuario()">Cadastrar</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -47,3 +48,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+<script src="./js/cadUsuario.js"></script>
