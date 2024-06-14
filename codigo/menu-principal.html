@@ -20,7 +20,7 @@
             Easy Storage
             </a>
             <div style="position: absolute; right: 0;">
-            <img src="img/avatar.png" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="" loading="lazy">
+            <a href="perfil.html"><img src="img/avatar.png" width="30" height="30" class="d-inline-block align-top rounded-circle" alt="" loading="lazy"></a>
             </div>
           </div>
         </div>
@@ -49,33 +49,33 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                  <th id="nomeFornecedor" scope="col">
-                    Nome
+                  <th id="descricao" scope="col">
+                    Descrição
                     <i
                       id="icone-descricao"
                       style="border-radius: 50px; cursor: pointer; border-width: 1px; border-style: solid; padding: 2px;"
                       class="bi bi-sort-alpha-down"></i>
                   </th>
-                  <th id="dataEntrega" scope="col">
-                    Ultima Entrega
+                  <th id="quantidade" scope="col">
+                    Quantidade
                     <i
                       id="icone-quantidade"
                       style="border-radius: 50px; cursor: pointer; border-width: 1px; border-style: solid; padding: 2px;"
                       class="bi bi-sort-numeric-down"></i>
                   </th>
-                  <th id="cidadeFornecedor" scope="col">
-                    Cidade
-                    <i
-                      id="icone-quantidade"
-                      style="border-radius: 50px; cursor: pointer; border-width: 1px; border-style: solid; padding: 2px;"
-                      class="bi bi-sort-numeric-down"></i>
+                  <th scope="col">*</th>
                 </tr>
             </thead>
             <tbody id="produtosTableBody">
-                <!-- Conteúdo será carregado dinamicamente -->
+                
             </tbody>
         </table>
     </div>
-    <script src="./js/fornecedores.js"></script>
 </body>
 </html>
+<script src="./js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="./js/produtoScript.js"></script>
+

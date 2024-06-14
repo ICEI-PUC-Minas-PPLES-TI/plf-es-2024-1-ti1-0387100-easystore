@@ -110,7 +110,6 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
         let idProcurado = parseInt(linha.id);
         if (Array.isArray(array.produtos)) {
           let objetoEncontrado = array.produtos.find(objeto => objeto.id === idProcurado);
-          console.log('teste objetoEncontrado ->', objetoEncontrado);
           const objetoEncontradoString = JSON.stringify(objetoEncontrado)
           localStorage.setItem('produtoSelecionado', objetoEncontradoString)
 

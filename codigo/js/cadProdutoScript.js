@@ -62,15 +62,15 @@ function cadastrarProduto() {
   addFornecedorSelect.value = 'nao';
 
   
-  window.location.href = 'index.html'
+  window.location.href = 'menu-principal.html'
   carregarPaginaPrincipal(array.produtos);
 };
 
 
 closeIcon.addEventListener('click', function () {
-  window.location.href = 'index.html';
+  window.location.href = 'menu-principal.html';
 });
 
 function cancelarCadastroProduto() {
-  window.location.href = 'index.html';
+  window.location.href = 'menu-principal.html';
 }

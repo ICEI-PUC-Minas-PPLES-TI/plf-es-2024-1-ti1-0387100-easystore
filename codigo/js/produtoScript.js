@@ -31,7 +31,7 @@ function edit(permitirAlteracoes) {
     });
   }
 
-  window.location.href = 'index.html'
+  window.location.href = 'menu-principal.html'
   carregarPaginaPrincipal(array.produtos);
 }
 
