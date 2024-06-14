@@ -56,3 +56,9 @@ function editarUsuario() {
 function voltar() {
   window.location.href = 'menu-principal.html';
 }
+
+function deslogar() {
+  localStorage.setItem('usuarioLogado', "{}");
+  window.location.href = 'index.html';
+  alert('Logoff feito com sucesso!');
+}
