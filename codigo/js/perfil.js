@@ -48,11 +48,11 @@ function editarUsuario() {
 
     const usuarioLogadoJSON = JSON.stringify({ "usuarioLogado": usuarioEditado });
     localStorage.setItem('usuarioLogado', usuarioLogadoJSON);
-    window.location.href = 'index.html';
+    window.location.href = 'menu-principal.html';
     alert('Usuário alterado com sucesso!');
   }
 }
 
 function voltar() {
-  window.location.href = 'index.html';
+  window.location.href = 'menu-principal.html';
 }

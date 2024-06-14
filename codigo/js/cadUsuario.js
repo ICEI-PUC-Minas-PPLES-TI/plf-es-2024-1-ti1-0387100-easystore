@@ -42,13 +42,13 @@ function cadastrarUsuario() {
       usuariosDefault.push(novoUsuario);
       const usuariosJSON = JSON.stringify({ "usuarios": usuariosDefault });
       localStorage.setItem('usuarios', usuariosJSON);
-      window.location.href = 'login.html'
+      window.location.href = 'index.html'
       alert('Usuario cadastrado com sucesso!');
     } else {
       obj.usuarios.push(novoUsuario);
       const usuariosJSON = JSON.stringify({ "usuarios": obj.usuarios });
       localStorage.setItem('usuarios', usuariosJSON);
-      window.location.href = 'login.html'
+      window.location.href = 'index.html'
       alert('Usuario cadastrado com sucesso!');
     }
   }

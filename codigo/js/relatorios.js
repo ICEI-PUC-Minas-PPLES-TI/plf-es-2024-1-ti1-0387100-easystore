@@ -56,5 +56,5 @@ document.getElementById('filtrarButton').addEventListener('click', function() {
 });
 
 document.getElementById('exitButton').addEventListener('click', function() {
-    window.location.href = 'index.html';
+    window.location.href = 'menu-principal.html';
 });

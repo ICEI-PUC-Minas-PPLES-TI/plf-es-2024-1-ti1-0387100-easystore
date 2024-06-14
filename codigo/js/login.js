@@ -30,7 +30,7 @@ function logar() {
       if (usuarioEncontrado != null) {
         const usuarioJSON = JSON.stringify({ "usuarioLogado": usuarioEncontrado });
         localStorage.setItem('usuarioLogado', usuarioJSON);
-        window.location.href = 'index.html';
+        window.location.href = 'menu-principal.html';
         alert('Login Realizado com sucesso!');
       } else {
         alert('Email ou senha inválido!');
