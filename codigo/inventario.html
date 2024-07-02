@@ -28,6 +28,7 @@
                 // Stop scanning after detecting a barcode
                 codeReader.reset();
                 textInput.style.display = 'block';
+				exibirNomeProduto();
             }
             if (err && !(err instanceof ZXing.NotFoundException)) {
                 console.error(err);
@@ -48,6 +49,7 @@
 						<label for="codBarras">Código de Barras:</label>
 						<input type="text" class="form-control" id="codBarras">
 					</div>
+					
 					<div class="text-center">
 					<button onclick="cameraClick()" style="width:100%">
 						<i id="cameraIcon" onclick="cameraClick()" class="bi bi-upc-scan"></i>
@@ -60,11 +62,15 @@
                     <label for="nome">Nome:</label>
                     <input readonly type="text" class="form-control" id="nome">
                 </div> -->
+				<div class="" style="display:none">
+					<label for="nome">Produto:</label>
+					<input type="text" class="form-control" id="nome" readonly>
+				</div>
                 <div class="form-group">
                     <label for="qnt">Qtd:</label>
                     <input type="number" class="form-control" id="qnt">
                 </div>
-
+				
 				 <div class="form-group text-right">
                     <a href="menu-principal.html" id="btnCancelar" class="btn btn-danger mr-2" >Sair</a>
                     <button id="btnEdit" class="btn btn-primary mr-2" onclick="realizarInventario()">Salvar</button>
