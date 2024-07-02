@@ -24,13 +24,15 @@ function realizarInventario() {
     }
 }
 function exibirNomeProduto() {
+	console.log('Buscando produto ');
     var codigoBarras = document.getElementById('codBarras').value;
+	console.log('Buscando produto ' + codigoBarras);
     var produtosString = localStorage.getItem('produtos');
     if (produtosString) {
         var produtosObj = JSON.parse(produtosString);
         if (produtosObj && produtosObj.produtos) {
             var produto = produtosObj.produtos.find(p => p.codBarras === codigoBarras);
-
+			console.log('produto encontrado =  ' + produto);
             if (produto) {
 				document.getElementById('nome').value = produto.nome;
 				document.getElementById('qnt').value = produto.quantidade;
