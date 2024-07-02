@@ -36,7 +36,7 @@ function exibirNomeProduto() {
             if (produto) {
 				document.getElementById('nome').value = produto.nome;
 				document.getElementById('qnt').value = produto.quantidade;
-				document.getElementById('nome').style.display = 'block';
+				document.getElementById('produto').style.display = 'block';
             } else {
                 alert('Produto não encontrado.');
             }
