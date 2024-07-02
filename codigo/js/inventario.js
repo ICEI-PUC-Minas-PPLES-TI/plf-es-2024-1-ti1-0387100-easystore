@@ -23,3 +23,21 @@ function realizarInventario() {
         alert('Nenhum produto encontrado no local storage.');
     }
 }
+function exibirNomeProduto() {
+    var codigoBarras = document.getElementById('codBarras').value;
+    var produtosString = localStorage.getItem('produtos');
+    if (produtosString) {
+        var produtosObj = JSON.parse(produtosString);
+        if (produtosObj && produtosObj.produtos) {
+            var produto = produtosObj.produtos.find(p => p.codBarras === codigoBarras);
+
+            if (produto) {
+				document.getElementById('nome').value = produto.nome;
+				document.getElementById('qnt').value = produto.quantidade;
+				document.getElementById('nome').style.display = 'block';
+            } else {
+                alert('Produto não encontrado.');
+            }
+        }
+    }
+}
