@@ -114,11 +114,12 @@ function registrarMovimentacao(idProduto, tipoMovimentacao, quantidadeMovimentac
 {
 	let movimentacoes = JSON.parse(localStorage.getItem('movimentacoes')) || [];
 
-    const movimentacao = {
+    let movimentacao = {
         id_produto: idProduto,
         tipo_movimentacao: tipoMovimentacao,
         quantidade_movimentacao: quantidadeMovimentacao,
-        nova_quantidade: novaQuantidade
+        nova_quantidade: novaQuantidade,
+		data: Date.now()
     };
 
     movimentacoes.push(movimentacao);
