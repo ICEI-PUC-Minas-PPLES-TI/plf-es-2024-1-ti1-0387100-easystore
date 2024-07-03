@@ -7,7 +7,8 @@ document.getElementById('filtrarButton').addEventListener('click', function() {
         const canvas = document.createElement('canvas');
         canvas.id = 'reportChart';
         reportContainer.appendChild(canvas);
-
+		let movimentacoes = JSON.parse(localStorage.getItem('movimentacoes')) || [];
+		
         const ctx = canvas.getContext('2d');
         const data = {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
