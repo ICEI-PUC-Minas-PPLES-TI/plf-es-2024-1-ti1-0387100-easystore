@@ -67,8 +67,8 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
     botao.addEventListener('click', function (event) {
         event.stopPropagation(); 
         let idProduto = parseInt(this.dataset.id);
-        registrarSaida();
-        atualizarQuantidade(idProduto, -1);
+        let novaQuantidade = atualizarQuantidade(idProduto, -1);
+		registrarSaida(idProduto,1,novaQuantidade);
     });
   });
 
@@ -76,8 +76,8 @@ function carregarPaginaPrincipal(produtosParaSeremCarregados) {
     botao.addEventListener('click', function (event) {
         event.stopPropagation(); 
         let idProduto = parseInt(this.dataset.id);
-        registrarEntrada();
-        atualizarQuantidade(idProduto, 1);
+        let novaQuantidade = atualizarQuantidade(idProduto, 1);
+		registrarEntrada(idProduto,1,novaQuantidade);
     });
   });
 }
@@ -91,8 +91,10 @@ function atualizarQuantidade(idProduto, valor) {
       produto.quantidade += valor;
       if (produto.quantidade < 0) produto.quantidade = 0;
       localStorage.setItem('produtos', JSON.stringify(produtosObj));
-      carregarPaginaPrincipal(); 
+      carregarPaginaPrincipal();
+	  return produto.quantidade;
     }
+	return 0;
   }
 }
 
