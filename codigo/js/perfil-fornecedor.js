@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById('nomeFornecedores').innerText = fornecedor.nomeFornecedores;
       document.getElementById('email').innerText = fornecedor.email;
       document.getElementById('telefone').innerText = fornecedor.telefone;
-      document.getElementById('endereco').innerText = fornecedor.endereço;
+      document.getElementById('endereco').innerText = fornecedor.endereco;
       document.getElementById('dataEntrega').innerText = fornecedor.dataEntrega;
       document.getElementById('cidadeFornecedores').innerText = fornecedor.cidadeFornecedores;
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       document.getElementById('editNome').value = fornecedor.nomeFornecedores;
       document.getElementById('editEmail').value = fornecedor.email;
       document.getElementById('editTelefone').value = fornecedor.telefone;
-      document.getElementById('editEndereco').value = fornecedor.endereço;
+      document.getElementById('editEndereco').value = fornecedor.endereco;
       document.getElementById('editDataEntrega').value = fornecedor.dataEntrega;
       document.getElementById('editCidade').value = fornecedor.cidadeFornecedores;
   }
@@ -40,13 +40,13 @@ function salvarEdicao() {
   };
 
   let fornecedoresData = localStorage.getItem('fornecedores');
-  let fornecedores = JSON.parse(fornecedoresData).fornecedores;
+  let fornecedoresObj = JSON.parse(fornecedoresData);
 
-  fornecedores = fornecedores.map(fornecedor => 
-      fornecedor.nomeFornecedores === document.getElementById('nomeFornecedores').innerText ? fornecedorEditado : fornecedor
+  fornecedoresObj = fornecedoresObj.map(fornecedor => 
+      fornecedor.id === JSON.parse(localStorage.getItem('fornecedoresSelecionado')).id ? fornecedorEditado : fornecedor
   );
 
-  localStorage.setItem('fornecedores', JSON.stringify({fornecedores}));
+  localStorage.setItem('fornecedores', JSON.stringify(fornecedoresObj));
   localStorage.setItem('fornecedoresSelecionado', JSON.stringify(fornecedorEditado));
 
   // Atualizando a visualização
