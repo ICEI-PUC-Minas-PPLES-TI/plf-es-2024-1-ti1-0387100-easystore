@@ -1,4 +1,4 @@
-# Nome do projeto
+# Easy Store
 
 Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 
@@ -11,7 +11,7 @@ Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
 
 ## Professores responsáveis
 
-* Rommel Vieira
+* Rommel Vieira Carneiro
 * Cleiton Silva Tavares
 
 ## Instruções de utilização
